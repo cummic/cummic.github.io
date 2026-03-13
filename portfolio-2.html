@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Craig Cummins, Product Manager</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0f0f0f;
+    --white: #fafaf8;
+    --gray-100: #f4f3f0;
+    --gray-200: #e8e6e1;
+    --gray-400: #b0ada6;
+    --gray-600: #6b6860;
+    --gray-800: #2e2c29;
+    --accent: #c84b2f;
+    --accent-light: #f5ede9;
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--white);
+    color: var(--black);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--white);
+    border-bottom: 1px solid var(--gray-200);
+    padding: 0 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+
+  .nav-name {
+    font-family: var(--sans);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--black);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 13px;
+    color: var(--gray-600);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--black); }
+
+  /* HERO */
+  .hero {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 6rem 2.5rem 5rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 5vw, 54px);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--black);
+    max-width: 680px;
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gray-600);
+  }
+
+  .hero-sub {
+    font-size: 16px;
+    color: var(--gray-600);
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background: var(--black);
+    color: var(--white);
+    border: 1px solid var(--black);
+  }
+
+  .btn-primary:hover { background: var(--gray-800); }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--black);
+    border: 1px solid var(--gray-200);
+  }
+
+  .btn-secondary:hover { border-color: var(--gray-400); background: var(--gray-100); }
+
+  /* SECTION LAYOUT */
+  .section {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 4rem 2.5rem;
+    border-top: 1px solid var(--gray-200);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    white-space: nowrap;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: var(--gray-200);
+  }
+
+  /* BREW FEATURED */
+  .brew-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--white);
+    transition: border-color 0.2s;
+  }
+
+  .brew-card:hover { border-color: var(--gray-400); }
+
+  .brew-image {
+    width: 100%;
+    background: var(--gray-100);
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--gray-200);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .brew-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .brew-image-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--gray-400);
+  }
+
+  .brew-image-placeholder .placeholder-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--gray-200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .brew-image-placeholder span {
+    font-size: 12px;
+  }
+
+  .brew-body {
+    padding: 2rem;
+  }
+
+  .brew-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  .tag-accent {
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  .tag-year {
+    background: var(--gray-100);
+    color: var(--gray-600);
+  }
+
+  .brew-title {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .brew-desc {
+    font-size: 15px;
+    color: var(--gray-600);
+    line-height: 1.75;
+    margin-bottom: 1.5rem;
+    max-width: 580px;
+  }
+
+  .brew-stats {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.75rem;
+    padding: 1.25rem 0;
+    border-top: 1px solid var(--gray-200);
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .stat-item { display: flex; flex-direction: column; gap: 2px; }
+  .stat-value { font-size: 20px; font-weight: 500; color: var(--black); }
+  .stat-label { font-size: 11px; color: var(--gray-400); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .brew-links { display: flex; gap: 0.75rem; }
+
+  /* PAST WORK */
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+
+  .work-card {
+    border: 1px solid var(--gray-200);
+    border-radius: 10px;
+    padding: 1.5rem;
+    background: var(--white);
+    transition: border-color 0.2s;
+  }
+
+  .work-card:hover { border-color: var(--gray-400); }
+
+  .work-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.25rem;
+  }
+
+  .work-company {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--black);
+  }
+
+  .work-years {
+    font-size: 12px;
+    color: var(--gray-400);
+  }
+
+  .work-role {
+    font-size: 12px;
+    color: var(--gray-400);
+    margin-bottom: 1rem;
+  }
+
+  .work-divider {
+    height: 1px;
+    background: var(--gray-200);
+    margin-bottom: 1rem;
+  }
+
+  .work-desc {
+    font-size: 13px;
+    color: var(--gray-600);
+    line-height: 1.7;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .about-aside { }
+
+  .about-aside-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gray-400);
+    margin-bottom: 1rem;
+  }
+
+  .about-skills {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .about-skills li {
+    font-size: 13px;
+    color: var(--gray-600);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .about-skills li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .about-text p {
+    font-size: 15px;
+    color: var(--gray-600);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--gray-200);
+    padding: 2rem 2.5rem;
+    max-width: 860px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-left { font-size: 13px; color: var(--gray-400); }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: var(--gray-600);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--black); }
+
+  /* FADE IN */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero { animation: fadeUp 0.5s ease both; }
+  .brew-card { animation: fadeUp 0.5s 0.1s ease both; }
+
+  /* RESPONSIVE */
+  @media (max-width: 640px) {
+    nav { padding: 0 1.25rem; }
+    .hero { padding: 3.5rem 1.25rem 3rem; }
+    .section { padding: 3rem 1.25rem; }
+    .work-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+    footer { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem 1.25rem; }
+    .brew-stats { gap: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-name">Craig Cummins</a>
+  <ul class="nav-links">
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="mailto:your@email.com">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero" id="top">
+  <p class="hero-eyebrow">Product Manager</p>
+  <h1>Building at the intersection of complex systems <em>and the people who use them.</em></h1>
+  <p class="hero-sub">15+ years in fintech, healthtech, and e-commerce. Recently went deep on AI: not just advising on it, but shipping it.</p>
+  <div class="hero-actions">
+    <a href="#projects" class="btn btn-primary">View projects →</a>
+    <a href="https://linkedin.com/in/craigcummins" class="btn btn-secondary" target="_blank">LinkedIn →</a>
+  </div>
+</div>
+
+<!-- FEATURED PROJECT -->
+<div class="section" id="projects">
+  <div class="section-header">
+    <span class="section-label">Featured project</span>
+    <div class="section-line"></div>
+  </div>
+
+  <div class="brew-card">
+    <div class="brew-image">
+      <img src="https://raw.githubusercontent.com/cummic/brew-ai-barista/main/assets/brew_demo-ezgif.com-video-to-gif-converter-2.gif" alt="Brew demo">
+    </div>
+    <div class="brew-body">
+      <div class="brew-meta">
+        <span class="tag tag-accent">AI Product</span>
+        <span class="tag tag-year">2026</span>
+      </div>
+      <h2 class="brew-title">Brew: AI Barista App</h2>
+      <p class="brew-desc">End-to-end AI ordering system built from scratch as a PM. Uses Claude's tool-calling API to handle ordering, inventory enforcement, and session management. Beta users exposed a real edge case: a math failure on bulk orders, which led to a guardrail fix and a new eval case.</p>
+      <div class="brew-stats">
+        <div class="stat-item">
+          <span class="stat-value">18</span>
+          <span class="stat-label">Eval cases</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">6</span>
+          <span class="stat-label">Test categories</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">13</span>
+          <span class="stat-label">Analytics queries</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">3</span>
+          <span class="stat-label">NYC locations</span>
+        </div>
+      </div>
+      <div class="brew-links">
+        <a href="https://brew-ai-barista.onrender.com" class="btn btn-primary" target="_blank">Live demo →</a>
+        <a href="https://github.com/cummic/brew-ai-barista" class="btn btn-secondary" target="_blank">GitHub →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PAST WORK -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-label">Past work</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="work-grid">
+    <div class="work-card">
+      <div class="work-top">
+        <span class="work-company">Optum Financial</span>
+        <span class="work-years">2023 – 2026</span>
+      </div>
+      <p class="work-role">Director of Product · Healthcare Fintech</p>
+      <div class="work-divider"></div>
+      <p class="work-desc">Led product for a health savings account platform serving 5M+ users at a Fortune 10 company. Rebuilt outdated systems, added self-service investment tools, and improved the account sign-up experience while meeting strict financial compliance requirements.</p>
+    </div>
+    <div class="work-card">
+      <div class="work-top">
+        <span class="work-company">Ro</span>
+        <span class="work-years">2022</span>
+      </div>
+      <p class="work-role">Group Product Manager · Telehealth</p>
+      <div class="work-divider"></div>
+      <p class="work-desc">Launched a new business line from scratch at a telehealth company covering nationwide patient care and pharmacy. Integrated a machine learning model to automate clinical decisions, improving top-of-funnel conversion by 10%.</p>
+    </div>
+    <div class="work-card">
+      <div class="work-top">
+        <span class="work-company">Freshly</span>
+        <span class="work-years">2018 – 2022</span>
+      </div>
+      <p class="work-role">Director of Product · Subscription E-commerce</p>
+      <div class="work-divider"></div>
+      <p class="work-desc">Owned the customer sign-up, onboarding, and checkout experience across web and mobile at a meal delivery subscription company acquired by Nestlé for $1.5B. Ran continuous A/B tests that drove a 15% lift in checkout conversion and 10% improvement in retention.</p>
+    </div>
+    <div class="work-card">
+      <div class="work-top">
+        <span class="work-company">HelloFresh</span>
+        <span class="work-years">2015 – 2018</span>
+      </div>
+      <p class="work-role">Director, Product &amp; Customer Insights · Food Tech</p>
+      <div class="work-divider"></div>
+      <p class="work-desc">Built the U.S. customer insights and UX research function from scratch at a global meal kit company through its 2017 IPO. Used customer feedback to shape the product roadmap and improve retention. Introduced an AI-based system to analyze qualitative customer feedback at scale.</p>
+    </div>
+    <div class="work-card">
+      <div class="work-top">
+        <span class="work-company">Robeco</span>
+        <span class="work-years">2006 – 2014</span>
+      </div>
+      <p class="work-role">Investment Director · Private Equity</p>
+      <div class="work-divider"></div>
+      <p class="work-desc">Managed a portfolio of 30+ international private equity funds totaling ~$500M in deployed capital at a global asset manager. Led the integration of a financial data platform that gave the investment team real-time self-service analytics.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<div class="section" id="about">
+  <div class="section-header">
+    <span class="section-label">About</span>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-aside">
+      <p class="about-aside-label">Specialties</p>
+      <ul class="about-skills">
+        <li>AI product development</li>
+        <li>Fintech &amp; regulated environments</li>
+        <li>Zero-to-one launches</li>
+        <li>Platform modernization</li>
+        <li>Growth &amp; conversion</li>
+        <li>Eval &amp; measurement</li>
+      </ul>
+    </div>
+    <div class="about-text">
+      <p>My background is in making hard things feel simple: regulated fintech platforms, clinical workflows, high-scale e-commerce. I've led zero-to-one launches and multi-year modernizations at Optum Financial, Freshly, and HelloFresh.</p>
+      <p>Recently I went deep on AI by building Brew from scratch: tool-calling architecture, eval suite, Supabase instrumentation, beta launch. The goal was to prove I can ship and measure an AI product, not just talk about one.</p>
+      <p>I'm drawn to problems where the technology is new, the stakes are real, and the right answer isn't obvious yet.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-left">C. Cummins © 2026</span>
+  <ul class="footer-links">
+    <li><a href="https://linkedin.com/in/craigcummins" target="_blank">LinkedIn</a></li>
+    <li><a href="https://github.com/cummic" target="_blank">GitHub</a></li>
+    <li><a href="mailto:craig.cummins@gmail.com">Contact</a></li>
+  </ul>
+</footer>
+
+</body>
+</html>
