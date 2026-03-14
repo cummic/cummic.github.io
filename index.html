@@ -56,11 +56,12 @@
     letter-spacing: 0.01em;
     color: var(--black);
     text-decoration: none;
+    white-space: nowrap;
   }
 
   .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 1.25rem;
     list-style: none;
   }
 
@@ -435,13 +436,21 @@
 
   /* RESPONSIVE */
   @media (max-width: 640px) {
-    nav { padding: 0 1.25rem; }
-    .hero { padding: 3.5rem 1.25rem 3rem; }
-    .section { padding: 3rem 1.25rem; }
-    .work-grid { grid-template-columns: 1fr; }
+    nav { padding: 0 1.25rem; height: auto; flex-direction: column; align-items: flex-start; padding-top: 0.75rem; padding-bottom: 0.75rem; gap: 0.5rem; }
+    .nav-name { font-size: 17px; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 13px; }
+    .hero { padding: 2.5rem 1.25rem 2rem; }
+    .hero h1 { font-size: 28px; }
+    .hero-sub { font-size: 15px; }
+    .section { padding: 2.5rem 1.25rem; }
     .about-grid { grid-template-columns: 1fr; gap: 2rem; }
     footer { flex-direction: column; gap: 1rem; text-align: center; padding: 1.5rem 1.25rem; }
-    .brew-stats { gap: 1.25rem; }
+    .brew-stats { gap: 1rem; flex-wrap: wrap; }
+    .stat-value { font-size: 18px; }
+    .brew-body { padding: 1.25rem; }
+    .brew-title { font-size: 22px; }
+    .brew-desc { font-size: 15px; }
   }
 </style>
 </head>
@@ -511,60 +520,6 @@
   </div>
 </div>
 
-<!-- PAST WORK -->
-<div class="section">
-  <div class="section-header">
-    <span class="section-label">Past work</span>
-    <div class="section-line"></div>
-  </div>
-  <div class="work-grid">
-    <div class="work-card">
-      <div class="work-top">
-        <span class="work-company">Optum Financial</span>
-        <span class="work-years">2023 – 2026</span>
-      </div>
-      <p class="work-role">Director of Product · Healthcare Fintech</p>
-      <div class="work-divider"></div>
-      <p class="work-desc">Led product for a health savings account platform serving 5M+ users at a Fortune 10 company. Rebuilt outdated systems, added self-service investment tools, and improved the account sign-up experience while meeting strict financial compliance requirements.</p>
-    </div>
-    <div class="work-card">
-      <div class="work-top">
-        <span class="work-company">Ro</span>
-        <span class="work-years">2022</span>
-      </div>
-      <p class="work-role">Group Product Manager · Telehealth</p>
-      <div class="work-divider"></div>
-      <p class="work-desc">Launched a new business line from scratch at a telehealth company covering nationwide patient care and pharmacy. Integrated a machine learning model to automate clinical decisions, improving top-of-funnel conversion by 10%.</p>
-    </div>
-    <div class="work-card">
-      <div class="work-top">
-        <span class="work-company">Freshly</span>
-        <span class="work-years">2018 – 2022</span>
-      </div>
-      <p class="work-role">Director of Product · Subscription E-commerce</p>
-      <div class="work-divider"></div>
-      <p class="work-desc">Owned the customer sign-up, onboarding, and checkout experience across web and mobile at a meal delivery subscription company acquired by Nestlé for $1.5B. Ran continuous A/B tests that drove a 15% lift in checkout conversion and 10% improvement in retention.</p>
-    </div>
-    <div class="work-card">
-      <div class="work-top">
-        <span class="work-company">HelloFresh</span>
-        <span class="work-years">2015 – 2018</span>
-      </div>
-      <p class="work-role">Director, Product &amp; Customer Insights · Food Tech</p>
-      <div class="work-divider"></div>
-      <p class="work-desc">Built the U.S. customer insights and UX research function from scratch at a global meal kit company through its 2017 IPO. Used customer feedback to shape the product roadmap and improve retention. Introduced an AI-based system to analyze qualitative customer feedback at scale.</p>
-    </div>
-    <div class="work-card">
-      <div class="work-top">
-        <span class="work-company">Robeco</span>
-        <span class="work-years">2006 – 2014</span>
-      </div>
-      <p class="work-role">Investment Director · Private Equity</p>
-      <div class="work-divider"></div>
-      <p class="work-desc">Managed a portfolio of 30+ international private equity funds totaling ~$500M in deployed capital at a global asset manager. Led the integration of a financial data platform that gave the investment team real-time self-service analytics.</p>
-    </div>
-  </div>
-</div>
 
 <!-- ABOUT -->
 <div class="section" id="about">
